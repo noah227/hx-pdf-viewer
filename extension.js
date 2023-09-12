@@ -29,17 +29,39 @@ class CatCustomEditorProvider extends CustomEditorProvider {
 
 	resolveCustomEditor(document, webViewPanel) {
 		// 关联CustomDocument与WebViewPanel
-		webViewPanel.webView.html = `
+		const w = webViewPanel.webView
+		w.html = `
 			<style>
 				html, body {
 					margin: 0;
+				}
+				a#viewWithExternal {
+					position: fixed;
+					right: 144px;
+					top: 16px;
+					z-index: 333;
+					text-decoration: none;
 				}
 				iframe {
 					border: 0;
 				}
 			</style>
+			<a id="viewWithExternal" href="javascript:void(0);" title="使用外部工具打开" onclick="openWithExternal('${document.uri}')">🌐</a>
 			<iframe src=${document.uri} style="width: 100%; height: 100%;"></iframe>
+			<script>
+				const openWithExternal = (uri) => {
+					hbuilderx.postMessage({
+						command: "openUri",
+						uri
+					});
+				}
+			</script>
 		`
+		w.onDidReceiveMessage((msg) => {
+			if (msg.command == "openUri") {
+				hx.env.openExternal(msg.uri)
+			}
+		});
 	}
 
 	saveCustomDocument(document) {
