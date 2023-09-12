@@ -1,0 +1,36 @@
+{
+	"id": "noahyoung-hx-pdf-viewer",
+	"name": "hx-pdf-viewer",
+	"description": "适用于HBuilderX的pdf查看器",
+	"displayName": "PDF文件查看",
+	"version": "0.1.0",
+	"publisher": "Noah Young",
+	"engines": {
+		"HBuilderX": "^2.7.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"main": "./extension",
+	"activationEvents": [
+		"onCustomEditor:catEdit.catPdf"
+	],
+	"contributes": {
+		"customEditors": [
+			{
+				"viewType": "catEdit.catPdf",
+				"displayName": "PDF预览",
+				"selector": [
+					{
+						"fileNamePattern": "*.pdf"
+					}
+				],
+				"priority": "default"
+			}
+		]
+	},
+	"extensionDependencies": [
+		"plugin-manager"
+	],
+	"dependencies": {}
+}
