@@ -1,7 +1,7 @@
 {
 	"id": "noahyoung-hx-pdf-viewer",
 	"name": "hx-pdf-viewer",
-	"description": "适用于HBuilderX的pdf查看器",
+	"description": "适用于HBuilderX的pdf查看器（IDE插件，非开发用）",
 	"displayName": "PDF文件查看",
 	"version": "0.1.0",
 	"publisher": "Noah Young",
